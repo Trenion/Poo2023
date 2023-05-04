@@ -1,10 +1,7 @@
 public class Shirt extends Artigos {
 
-    String Tipo;
     String Tamanho;
     String Padrao;
-    double PrecoBaseT;
-    boolean Usado;
 
     public Shirt(String Tipo, String Tamanho, String Padrao, double PrecoBaseT, boolean Usado){
         this.Tipo = Tipo;

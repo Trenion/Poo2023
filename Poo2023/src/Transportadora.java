@@ -10,9 +10,7 @@ public class Transportadora {
         this.Pequeno = Pequeno;
         this.Medio = Medio;
         this.Grande = Grande;
-
     }
-
 
     public Transportadora() {
     }
