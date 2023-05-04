@@ -1,6 +1,8 @@
 
-import java.util.Date;
-import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Encomenda {
 
@@ -9,22 +11,26 @@ public class Encomenda {
     String transportadoraNome;
     String Dimensao;// tamanho da emcomenda.
     double PreçoF;
-    double TaxaSatisfacao;/*com a taxa
+    //double TaxaSatisfacao;
+    /*com a taxa
     de satisfação de serviço de 0,5 € por cada artigo novo e de 0,25€ por cada artigo usado e ainda os custos
     de expedição (que serão dependentes de transportadora para transportadora). */
-    Date Criacao;
-    ArrayList<Artigos> artigos= new ArrayList<Artigos>();
+    int Criacao;
+    Map<String,Artigo> artigos;
     
 
     public Encomenda() {
+        this.codigoUser=-1;
+        this.PreçoF=-1;
+        this.Criacao = 2023 ;
+        this.artigos= new HashMap<String,Artigo>(); 
     }
 
-    public Encomenda(int codigoUser, String transportadoraNome, String Dimensao, double PreçoF, double TaxaSatisfacao, Date Criacao, ArrayList<Artigos> artigos) {
+    public Encomenda(int codigoUser, String transportadoraNome, String Dimensao, double PreçoF, int Criacao, Map<String,Artigo> artigos) {
         this.codigoUser = codigoUser;
         this.transportadoraNome = transportadoraNome;
         this.Dimensao = Dimensao;
         this.PreçoF = PreçoF;
-        this.TaxaSatisfacao = TaxaSatisfacao;
         this.Criacao = Criacao;
         this.artigos = artigos;
     }
@@ -34,7 +40,6 @@ public class Encomenda {
         this.transportadoraNome = getTransportadoraNome();
         this.Dimensao = getDimensao();
         this.PreçoF = getPreçoF();
-        this.TaxaSatisfacao = getTaxaSatisfacao();
         this.Criacao = getCriacao();
         this.artigos = getArtigos();
     }
@@ -71,53 +76,56 @@ public class Encomenda {
         this.PreçoF = PreçoF;
     }
 
-    public double getTaxaSatisfacao() {
-        return this.TaxaSatisfacao;
-    }
+ 
 
-    public void setTaxaSatisfacao(double TaxaSatisfacao) {
-        this.TaxaSatisfacao = TaxaSatisfacao;
-    }
-
-    public Date getCriacao() {
+    public int getCriacao() {
         return this.Criacao;
     }
 
-    public void setCriacao(Date Criacao) {
+    public void setCriacao(int Criacao) {
         this.Criacao = Criacao;
     }
 
-    public ArrayList<Artigos> getArtigos() {
+    public Map<String,Artigo> getArtigos() {
         return this.artigos;
     }
 
-    public void setArtigos(ArrayList<Artigos> artigos) {
+    public void setArtigos(Map<String,Artigo> artigos) {
         this.artigos = artigos;
     }
     
 
-    @Override
-    public String toString() {
-        return "{" +
-            " codigoUser='" + getCodigoUser() + "'" +
-            ", transportadoraNome='" + getTransportadoraNome() + "'" +
-            ", Dimensao='" + getDimensao() + "'" +
-            ", PreçoF='" + getPreçoF() + "'" +
-            ", TaxaSatisfacao='" + getTaxaSatisfacao() + "'" +
-            ", Criacao='" + getCriacao() + "'" +
-            ", artigos='" + getArtigos() + "'" +
-            "}";
-    }
-    public Encomendas clone () {
-        return new Encomendas ( this ) ;
+
+    public Encomenda clone () {
+        return new Encomenda ( this ) ;
         }
+
     public boolean equals ( Object o ) {
         if ( this == o )
             return true ;
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
-        Encomendas E = ( Encomendas ) o ;
-        return (this.codigoUser == E.getCodigoUser() && this.transportadoraNome == E.getTransportadoraNome() && this.Dimensao == E.getDimensao() && this.PreçoF == E.getPreçoF() && this.TaxaSatisfacao == E.getTaxaSatisfacao() && this.Criacao == E.getCriacao() && this.artigos == E.getArtigos());
+        Encomenda E = ( Encomenda ) o ;
+        return (this.codigoUser == E.getCodigoUser() && this.transportadoraNome == E.getTransportadoraNome() && this.Dimensao == E.getDimensao() && this.PreçoF == E.getPreçoF() && this.Criacao == E.getCriacao() && this.artigos == E.getArtigos());
+    }
+
+
+    public double precoFinalTotal(double peq,double med,double gra, Map<String,Artigo> artigos){
+        double PreçoF=0;
+        //artigo novo paga 0.5 e usado 0.25
+        for (var entry : artigos.values()) {
+            switch(entry.getId()):
+                case"Tshirt":
+                break;
+                case "Mala":
+                break;
+                case"Sapatilha":
+                break;
+                default:
+            
+        }
+
+        return PreçoF;
     }
 
 }

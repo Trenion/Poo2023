@@ -13,6 +13,10 @@ public class Transportadora {
     }
 
     public Transportadora() {
+        this.Pequeno = -1;
+        this.Medio = -1;
+        this.Grande = -1;
+        
     }
 
     public Transportadora(Transportadora K) {
@@ -55,15 +59,6 @@ public class Transportadora {
     }
     
 
-    @Override
-    public String toString() {
-        return "{" +
-            " Nome='" + getNome() + "'" +
-            ", Pequeno='" + getPequeno() + "'" +
-            ", Medio='" + getMedio() + "'" +
-            ", Grande='" + getGrande() + "'" +
-            "}";
-    }
 
     public Transportadora clone () {
         return new Transportadora ( this ) ;

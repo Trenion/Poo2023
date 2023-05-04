@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Utilizador {
 
@@ -7,21 +10,28 @@ public class Utilizador {
     String Nome;
     String Morada;
     int NFiscal;
-    ArrayList<Artigos> HistoricoVendido = new ArrayList<Artigos>();
-    ArrayList<Artigos> HistoricoComprado = new ArrayList<Artigos>();
+    Map<String,Artigo> HistoricoVendido;
+    Map<String,Artigo> HistoricoComprado; 
 
-    public Utilizador(int Codigo, String Email,String Nome, String Morada, int NFiscal,ArrayList<Artigos> HistoricoVendido,ArrayList<Artigos> HistoricoComprado) {
+    public Utilizador(int Codigo, String Email,String Nome, String Morada, int NFiscal,Map<String,Artigo> HistoricoVendido,Map<String,Artigo> HistoricoComprado) {
         this.Codigo = Codigo;
         this.Email = Email;
         this.Nome = Nome;
         this.Morada = Morada;
         this.NFiscal = NFiscal;
         this.HistoricoVendido = HistoricoVendido;
-        this.HistoricoComprado=HistoricoComprado;
+        this.HistoricoComprado = HistoricoComprado;
     
     }
 
     public Utilizador() {
+        this.Codigo = -1;
+        this.Email = null;
+        this.Nome = null;
+        this.Morada = null;
+        this.NFiscal = -1;
+        this.HistoricoVendido = new HashMap<String,Artigo>(); 
+        this.HistoricoComprado = new HashMap<String,Artigo>(); 
     }
 
     public Utilizador(Utilizador U) {
@@ -74,46 +84,35 @@ public class Utilizador {
         this.NFiscal = NFiscal;
     }
 
-    public ArrayList<Artigos> getHistoricoVendido() {
+    public Map<String,Artigo>getHistoricoVendido() {
         return this.HistoricoVendido;
     }
 
-    public void setHistoricoVendido(ArrayList<Artigos> HistoricoVendido) {
+    public void setHistoricoVendido(Map<String,Artigo> HistoricoVendido) {
         this.HistoricoVendido = HistoricoVendido;
     }
 
-    public ArrayList<Artigos> getHistoricoComprado() {
+    public Map<String,Artigo> getHistoricoComprado() {
         return this.HistoricoComprado;
     }
 
-    public void setHistoricoComprado(ArrayList<Artigos> HistoricoComprado) {
+    public void setHistoricoComprado(Map<String,Artigo> HistoricoComprado) {
         this.HistoricoComprado = HistoricoComprado;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " Codigo='" + getCodigo() + "'" +
-            ", Email='" + getEmail() + "'" +
-            ", Nome='" + getNome() + "'" +
-            ", Morada='" + getMorada() + "'" +
-            ", NFiscal='" + getNFiscal() + "'" +
-            ", HistoricoVendido='" + getHistoricoVendido() + "'" +
-            ", HistoricoComprado='" + getHistoricoComprado() + "'" +
-            "}";
-    }
+ 
 
     public boolean equals ( Object o ) {
         if ( this == o )
             return true ;
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
-        Utilizadores U = ( Utilizadores ) o ;
+        Utilizador U = ( Utilizador ) o ;
         return (this.Codigo == U.getCodigo() && this.Email == U.getEmail() && this.Nome == U.getNome() && this.Morada == U.getMorada() && this.NFiscal == U.getNFiscal() && this.HistoricoVendido == U.getHistoricoVendido() && this.HistoricoComprado==U.getHistoricoComprado());
     }
 
-    public Utilizadores clone () {
-        return new Utilizadores ( this ) ;
+    public Utilizador clone () {
+        return new Utilizador ( this ) ;
         }
     
 }

@@ -1,47 +1,36 @@
-public class Sapatilha extends Artigos {
+public class Sapatilha extends Artigo {
 
     int Tamanho;
     boolean Atacadores;
     String Color;
-    int Year;
-    double PrecoBase;
-    boolean Premium;
-    boolean UsadoS;
+    
 
-    public Sapatilha(String Tipo, int Tamanho, boolean Atacadores, String Color,int Year, double PrecoBase, boolean Premium, boolean UsadoS) {
-        this.Tipo = Tipo;
+
+    public Sapatilha( int Tamanho, boolean Atacadores, String Color) {
+ 
         this.Tamanho = Tamanho;
         this.Atacadores = Atacadores;
         this.Color = Color;
-        this.Year = Year;
-        this.PrecoBase = PrecoBase;
-        this.Premium = Premium;
-        this.UsadoS = UsadoS;
+        
 
     }
 
     public Sapatilha() {
+        this.Atacadores = false;
+        this.Tamanho= -1;
+        
     }
 
     public Sapatilha(Sapatilha A) {
-        this.Tipo = A.getTipo();
+
         this.Tamanho = A.getTamanho();
         this.Atacadores = A.getAtacadores();
         this.Color = A.getColor();
-        this.Year = A.getYear();
-        this.PrecoBase = A.getPrecoBase();
-        this.Premium = A.getPremium();
-        this.UsadoS = A.getUsadoS();
+        
+
     }
 
 
-    public String getTipo() {
-        return this.Tipo;
-    }
-
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
-    }
 
     public int getTamanho() {
         return this.Tamanho;
@@ -71,63 +60,12 @@ public class Sapatilha extends Artigos {
         this.Color = Color;
     }
 
-    public int getYear() {
-        return this.Year;
-    }
 
-    public void setYear(int Year) {
-        this.Year = Year;
-    }
 
-    public double getPrecoBase() {
-        return this.PrecoBase;
-    }
 
-    public void setPrecoBase(double PrecoBase) {
-        this.PrecoBase = PrecoBase;
-    }
 
-    public boolean isPremium() {
-        return this.Premium;
-    }
-
-    public boolean getPremium() {
-        return this.Premium;
-    }
-
-    public void setPremium(boolean Premium) {
-        this.Premium = Premium;
-    }
-
-    public boolean isUsadoS() {
-        return this.UsadoS;
-    }
-
-    public boolean getUsadoS() {
-        return this.UsadoS;
-    }
-
-    public void setUsadoS(boolean UsadoS) {
-        this.UsadoS = UsadoS;
-    }
-    
-
-    @Override
-    public String toString() {
-        return "{" +
-            " Tipo='" + getTipo() + "'" +
-            ", Tamanho='" + getTamanho() + "'" +
-            ", Atacadores='" + isAtacadores() + "'" +
-            ", Color='" + getColor() + "'" +
-            ", Year='" + getYear() + "'" +
-            ", PrecoBase='" + getPrecoBase() + "'" +
-            ", Premium='" + isPremium() + "'" +
-            ", UsadoS='" + isUsadoS() + "'" +
-            "}";
-    }
-
-    public Sapatilhas clone () {
-        return new Sapatilhas ( this ) ;
+    public Sapatilha clone () {
+        return new Sapatilha ( this ) ;
         }
 
     public boolean equals ( Object o ) {
@@ -135,8 +73,8 @@ public class Sapatilha extends Artigos {
             return true ;
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
-        Sapatilhas A = ( Sapatilhas ) o ;
-        return (this.Tipo == A.getTipo() && this.Tamanho == A.getTamanho() && this.Atacadores == A.getAtacadores() && this.Color == A.getColor() && this.Year == A.getYear() && this.PrecoBase == A.getPrecoBase() && this.Premium == A.getPremium() && this.UsadoS == A.getUsadoS());
+        Sapatilha A = ( Sapatilha ) o ;
+        return ( this.Tamanho == A.getTamanho() && this.Atacadores == A.getAtacadores() && this.Color == A.getColor());
     }  
 
 }
