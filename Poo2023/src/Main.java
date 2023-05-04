@@ -23,41 +23,6 @@ public class Main {
   
     }
 
-// o readFile não está feito da maneira como o sor quer
-    public static void readFile(String name){
-        System.out.println(name);
-        try {
-            File myObj = new File(name);
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-              String data = myReader.nextLine();
-              System.out.println(data);
-            }
-            myReader.close();
-          } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-          }catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-    }
-/* 
-    public static ArrayList<Transportadora> addTrans(ArrayList<Transportadora> lista){
-        Scanner scanner = new Scanner(System.in); 
-        System.out.println("Nome da transportadora:\n");
-        String line1 = scanner.nextLine();
-        System.out.println("Preço para tamanho pequeno:\n");
-        double line2 = scanner.nextDouble();
-        System.out.println("Preço para tamanho medio:\n");
-        double line3 = scanner.nextDouble();
-        System.out.println("Preço para tamanho grando:\n");
-        double line4 = scanner.nextDouble();
-        lista.add(new Transportadora(line1, line2, line3,line4));
-
-        return lista;
-    }*/
-    
     public static ArrayList<Artigos> loadFile(String filename,ArrayList<Artigos> lista) throws IOException{
         FileInputStream fis = new FileInputStream(filename);
         int i = fis.read();
@@ -83,8 +48,66 @@ public class Main {
         fos.flush();
         fos.close();
     }
+
+    //i need to fix this
+
+    public static String readFromFile(String fileName) {
+        try {
+            // Create a new file object
+            File file = new File(fileName);
+                       
+            // Read data from the file
+            byte[] buffer = new byte[(int) file.length()];
+            FileInputStream fis = new FileInputStream(file);
+            fis.read(buffer);
+            fis.close();
+            
+            // Convert the byte array to a string and return it
+            return new String(buffer);
+        } catch (IOException e) {
+            // Log the error and return an empty string
+            System.out.println("Error: " + e.getMessage());
+            return "";
+        }
+    }
     
+/* 
+// o readFile não está feito da maneira como o sor quer
+    public static void readFile(String name){
+        System.out.println(name);
+        try {
+            File myObj = new File(name);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+              String data = myReader.nextLine();
+              System.out.println(data);
+            }
+            myReader.close();
+          } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }*/
+/* 
+    public static ArrayList<Transportadora> addTrans(ArrayList<Transportadora> lista){
+        Scanner scanner = new Scanner(System.in); 
+        System.out.println("Nome da transportadora:\n");
+        String line1 = scanner.nextLine();
+        System.out.println("Preço para tamanho pequeno:\n");
+        double line2 = scanner.nextDouble();
+        System.out.println("Preço para tamanho medio:\n");
+        double line3 = scanner.nextDouble();
+        System.out.println("Preço para tamanho grando:\n");
+        double line4 = scanner.nextDouble();
+        lista.add(new Transportadora(line1, line2, line3,line4));
+
+        return lista;
+    }*/
     
+
     /* 
     public static ArrayList<Transportadora> loadTrans(String name){
         ArrayList<Transportadora> lista = new ArrayList<Transportadora>();
@@ -127,31 +150,6 @@ public class Main {
 
 
     }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
