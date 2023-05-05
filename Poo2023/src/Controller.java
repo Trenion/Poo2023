@@ -10,10 +10,14 @@ import java.io.ObjectOutputStream;
 
 public class Controller{
 
+    TMB tmb = new TMB();
+
     public void start(){
         String option = "";
     
+        TMB tmb = new TMB();
 
+        Parse.parse(tmb);
 
 
 
@@ -21,7 +25,7 @@ public class Controller{
         View.printMenu();
 
         View.showInsercao("uma opçao: ");
-        
+
         option = Input.lerString();
         option = option.toUpperCase();
 
@@ -39,12 +43,14 @@ public class Controller{
 
 
 
+
+
             /*gravar o estado da aplicação em ficheiro*/
             case "S": {
                 String filename = "gestEncomendas.dat";
                 try {
                     ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
-                    os.writeObject(sge);
+                    os.writeObject(tmb);
                     os.close();
                 }
                 catch(IOException e){
@@ -59,7 +65,7 @@ public class Controller{
                 String filename = "gestEncomendas.dat";
                 try {
                     ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
-                    sge = (SGE) is.readObject();
+                    tmb = (TMB) is.readObject();
                     is.close();
                 }
                 catch(IOException | ClassNotFoundException e){

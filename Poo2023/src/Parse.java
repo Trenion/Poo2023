@@ -47,7 +47,7 @@ public class Parse {
                     tmb.addEncomenda(enc);
 
                     /*Dono da encomenda*/
-                    Utilizador u = tmb.getUtilizadores().get(enc.getCodUtilizador());
+                    Utilizador u = tmb.getUtilizadores().get(enc.getCodigoUser());
 
                     /*Adiciona a encomenda ao utilizador*/
                     u.addEncomenda(enc);
@@ -70,8 +70,16 @@ public static Utilizador parseUtilizador(String input){
     String nome = campos[1];
     String morada = campos[2];
     int numFiscal= Integer.valueOf(campos[3]);
-    Map<String,Artigo> historicoVendido= campos[4];
-    Map<String,Artigo> historicoComprado= campos[5];
+    
+    Map<String,Artigo> historicoVendido = new HashMap<String,Artigo>();
+    Map<String,Artigo> historicoComprado = new HashMap<String,Artigo>();
+
+    for(int i = 5; i < campos.length; i=i+12){
+        historicoVendido.put(campos[i],parseArtigo(campos[i]+","+campos[i+1]+","+campos[i+2]+","+campos[i+3]+","+campos[i+4]+","+campos[i+5]+","+campos[i+6]+","+campos[i+7]+","+campos[i+8]+","+campos[i+9]+","+campos[i+10]+","+campos[i+11]));
+    }
+    for(int i = 5; i < campos.length; i=i+12){
+        historicoComprado.put(campos[i],parseArtigo(campos[i]+","+campos[i+1]+","+campos[i+2]+","+campos[i+3]+","+campos[i+4]+","+campos[i+5]+","+campos[i+6]+","+campos[i+7]+","+campos[i+8]+","+campos[i+9]+","+campos[i+10]+","+campos[i+11]));
+    }
 
 
     return new Utilizador(codUtilizador,nome,morada,numFiscal,historicoVendido,historicoComprado);
