@@ -114,17 +114,19 @@ public class Encomenda {
         double PreçoF=0;
         //artigo novo paga 0.5 e usado 0.25
         for (var entry : artigos.values()) {
-            switch(entry.getId()):
-                case"Tshirt":
-                break;
-                case "Mala":
-                break;
-                case"Sapatilha":
-                break;
-                default:
-            
+                    if(entry.getUsado()==true){
+                        PreçoF=PreçoF+0.25;
+                    }else{
+                        PreçoF=PreçoF+0.50;
+                    }
+                    if(entry.getTamanho()=="M" || entry.getTamanho()=="38"|| entry.getTamanho()=="39"|| entry.getTamanho()=="40"|| entry.getTamanho()=="41"){
+                        PreçoF= PreçoF+ med + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                    }else if(entry.getTamanho()=="S" || entry.getTamanho()=="XS" || Double.valueOf(entry.getTamanho())<38){
+                        PreçoF= PreçoF+ peq + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                    }else{
+                        PreçoF= PreçoF+ gra + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                    }    
         }
-
         return PreçoF;
     }
 

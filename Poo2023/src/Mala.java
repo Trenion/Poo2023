@@ -1,14 +1,14 @@
 public class Mala extends Artigo {
 
  
-    String Tamanho;
+    
     String Material;
 
 
 
-    public Mala(String Tamanho, String Material) {
+    public Mala( String Material) {
         
-        this.Tamanho = Tamanho;
+        
         this.Material = Material;
       
 
@@ -19,19 +19,11 @@ public class Mala extends Artigo {
 
     public Mala(Mala M) {
     
-        this.Tamanho = M.getTamanho();
+        
         
         this.Material = M.getMaterial();
        
 
-    }
-
-    public String getTamanho() {
-        return this.Tamanho;
-    }
-
-    public void setTamanho(String Tamanho) {
-        this.Tamanho = Tamanho;
     }
 
 
@@ -55,6 +47,6 @@ public class Mala extends Artigo {
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
         Mala M = ( Mala ) o ;
-        return (this.Tamanho == M.getTamanho() && this.Material == M.getMaterial());
+        return ( this.Material == M.getMaterial());
     }    
 }

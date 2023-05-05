@@ -20,9 +20,11 @@ public class Artigo {
     private String marca;
     private Boolean premium;
     private int ano;
+    private String tamanho;
+    private double valorizacao;
 
 
-    public Artigo(String id, boolean usado, String avaliacao, int numDonosPrevios, double precoBase, double precoF, String descricao, String marca, Boolean premium, int ano) {
+    public Artigo(String id, boolean usado, String avaliacao, int numDonosPrevios, double precoBase, double precoF, String descricao, String marca, Boolean premium, int ano,String tamanho,double valorizacao) {
         this.id = id;
         this.usado = usado;
         this.avaliacao = avaliacao;
@@ -33,6 +35,8 @@ public class Artigo {
         this.marca = marca;
         this.premium = premium;
         this.ano = ano;
+        this.tamanho=tamanho;
+        this.valorizacao=valorizacao;
     }
     
     public Artigo(Artigo A) {
@@ -46,6 +50,8 @@ public class Artigo {
         this.marca =A.getMarca();
         this.premium = A.getPremium();
         this.ano = A.getAno();
+        this.tamanho=A.getTamanho();
+        this.valorizacao=A.getValorizacao();
     }
 
     public Artigo () {
@@ -55,6 +61,15 @@ public class Artigo {
         this.precoBase = 0.00;
         this.precoF = 0.00;
         this.ano = 2023;
+        this.valorizacao=0.00;
+    }
+
+    public double getValorizacao() {
+        return this.valorizacao;
+    }
+
+    public void setValorizacao(double valorizacao) {
+        this.valorizacao = valorizacao;
     }
 
 
@@ -146,9 +161,22 @@ public class Artigo {
         this.ano = ano;
     }
 
+
+    public String getTamanho() {
+        return this.tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+
+
     public Artigo clone () {
         return new Artigo ( this ) ;
         }
+
+
 
     public boolean equals ( Object o ) {
         if ( this == o )
@@ -156,7 +184,7 @@ public class Artigo {
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
         Artigo A = ( Artigo ) o ;
-        return ( this.id == A.getId() && this.usado == A.getUsado() && this.avaliacao == A.getAvaliacao() && this.numDonosPrevios == A.getNumDonosPrevios() && this.precoBase ==A.getPrecoBase() && this.precoF == A.getPrecoF() && this.descricao == A.getDescricao() && this.marca ==A.getMarca() && this.premium == A.getPremium() && this.ano == A.getAno());
+        return ( this.id == A.getId() && this.usado == A.getUsado() && this.avaliacao == A.getAvaliacao() && this.numDonosPrevios == A.getNumDonosPrevios() && this.precoBase ==A.getPrecoBase() && this.precoF == A.getPrecoF() && this.descricao == A.getDescricao() && this.marca ==A.getMarca() && this.premium == A.getPremium() && this.ano == A.getAno()&& this.tamanho == A.getTamanho() && this.valorizacao == A.getValorizacao()  );
     }
 
 

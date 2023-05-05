@@ -1,14 +1,14 @@
 public class Sapatilha extends Artigo {
 
-    int Tamanho;
+  
     boolean Atacadores;
     String Color;
     
 
 
-    public Sapatilha( int Tamanho, boolean Atacadores, String Color) {
+    public Sapatilha(  boolean Atacadores, String Color) {
  
-        this.Tamanho = Tamanho;
+        ;
         this.Atacadores = Atacadores;
         this.Color = Color;
         
@@ -17,13 +17,13 @@ public class Sapatilha extends Artigo {
 
     public Sapatilha() {
         this.Atacadores = false;
-        this.Tamanho= -1;
+        
         
     }
 
     public Sapatilha(Sapatilha A) {
 
-        this.Tamanho = A.getTamanho();
+        
         this.Atacadores = A.getAtacadores();
         this.Color = A.getColor();
         
@@ -31,14 +31,6 @@ public class Sapatilha extends Artigo {
     }
 
 
-
-    public int getTamanho() {
-        return this.Tamanho;
-    }
-
-    public void setTamanho(int Tamanho) {
-        this.Tamanho = Tamanho;
-    }
 
     public boolean isAtacadores() {
         return this.Atacadores;
@@ -74,7 +66,7 @@ public class Sapatilha extends Artigo {
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
         Sapatilha A = ( Sapatilha ) o ;
-        return ( this.Tamanho == A.getTamanho() && this.Atacadores == A.getAtacadores() && this.Color == A.getColor());
+        return (  this.Atacadores == A.getAtacadores() && this.Color == A.getColor());
     }  
 
 }
