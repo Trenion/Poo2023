@@ -32,10 +32,10 @@ public class Parse {
                 }
 
                 case "Artigo": {
-                    Artigo l = parseArtigo(linhaPartida[1]);
+                    Artigo a = parseArtigo(linhaPartida[1]);
 
-                    /*ADICIONAR LOJA A LISTA*/
-                    tmb.addArtigo(l);
+                    /*ADICIONAR artigo A LISTA*/
+                    tmb.addArtigo(a);
 
                     break;
                 }
@@ -47,10 +47,10 @@ public class Parse {
                     tmb.addEncomenda(enc);
 
                     /*Dono da encomenda*/
-                    Utilizador u = tmb.getUtilizadores().get(enc.getCodigoUser());
+                    //Utilizador u = tmb.getUtilizadores().get(enc.getCodigoUser());
 
                     /*Adiciona a encomenda ao utilizador*/
-                    u.addEncomenda(enc);
+                    //u.addEncomenda(enc);
 
                     break;
                 }
@@ -66,23 +66,27 @@ public class Parse {
 public static Utilizador parseUtilizador(String input){
     String[] campos = input.split(",");
 
-    String codUtilizador = campos[0];
-    String nome = campos[1];
-    String morada = campos[2];
-    int numFiscal= Integer.valueOf(campos[3]);
+    int codUtilizador = Integer.valueOf(campos[0]);
+    String email = campos[1];
+    String nome = campos[2];
+    String morada = campos[3];
+    int numFiscal= Integer.valueOf(campos[4]);
     
     Map<String,Artigo> historicoVendido = new HashMap<String,Artigo>();
     Map<String,Artigo> historicoComprado = new HashMap<String,Artigo>();
+//PROBLEM HERE
+   
+    String[] campos1 = campos[5].split(",");
+    String[] campos2 = campos[6].split(",");
 
-    for(int i = 5; i < campos.length; i=i+12){
-        historicoVendido.put(campos[i],parseArtigo(campos[i]+","+campos[i+1]+","+campos[i+2]+","+campos[i+3]+","+campos[i+4]+","+campos[i+5]+","+campos[i+6]+","+campos[i+7]+","+campos[i+8]+","+campos[i+9]+","+campos[i+10]+","+campos[i+11]));
-    }
-    for(int i = 5; i < campos.length; i=i+12){
-        historicoComprado.put(campos[i],parseArtigo(campos[i]+","+campos[i+1]+","+campos[i+2]+","+campos[i+3]+","+campos[i+4]+","+campos[i+5]+","+campos[i+6]+","+campos[i+7]+","+campos[i+8]+","+campos[i+9]+","+campos[i+10]+","+campos[i+11]));
-    }
+  for(int i = 0; i < campos1.length; i++){
+    historicoVendido.put(campos1[i],parseArtigo(campos1[i]));
+  }
+  for(int i = 0; i < campos2.length; i++){
+    historicoComprado.put(campos2[i],parseArtigo(campos2[i]));
+  }
 
-
-    return new Utilizador(codUtilizador,nome,morada,numFiscal,historicoVendido,historicoComprado);
+    return new Utilizador( codUtilizador,email,nome,morada,numFiscal,historicoVendido,historicoComprado);
 }
 
  
@@ -137,10 +141,10 @@ public static Encomenda parseEncomenda(String input){
 
 
   Map<String,Artigo> artigos = new HashMap<String,Artigo>();
+  String[] campos1 = campos[4].split(",");
 
-
-  for(int i = 5; i < campos.length; i=i+12){
-      artigos.put(campos[i],parseArtigo(campos[i]+","+campos[i+1]+","+campos[i+2]+","+campos[i+3]+","+campos[i+4]+","+campos[i+5]+","+campos[i+6]+","+campos[i+7]+","+campos[i+8]+","+campos[i+9]+","+campos[i+10]+","+campos[i+11]));
+  for(int i = 0; i < campos1.length; i++){
+      artigos.put(campos1[i],parseArtigo(campos1[i]));
   }
 
   return new Encomenda(codigoUser,transportadoraNome,Dimensao,PreçoF,Criacao,artigos);
