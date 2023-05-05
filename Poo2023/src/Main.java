@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileWriter;
 import java.io.FileReader;
 import java.lang.String;
 import java.util.ArrayList;
@@ -18,12 +18,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Controller controller = new Controller();
+
+        controller.start();
         
-        ArrayList<Artigos> lista = new ArrayList<Artigos>();
-        lista = loadFile("Order.txt", lista);
   
     }
-
+/* 
     public static ArrayList<Artigos> loadFile(String filename,ArrayList<Artigos> lista) throws IOException{
         FileInputStream fis = new FileInputStream(filename);
         int i = fis.read();
@@ -50,7 +51,7 @@ public class Main {
         fos.close();
     }
 
-    //i need to fix this
+/i need to fix this
 
     public static String readFromFile(String fileName) {
         try {
@@ -71,7 +72,7 @@ public class Main {
             return "";
         }
     }
-    
+    */
 /* 
 // o readFile não está feito da maneira como o sor quer
     public static void readFile(String name){
