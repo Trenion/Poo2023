@@ -65,4 +65,68 @@ public class TMB {
     }
 
     public void addEncomenda(Encomenda e){encomendas.put(Integer.toString(e.getCodigoUser()), e);}
+
+    public Artigo createArtigo(){
+        
+
+        
+        View.showInsercao("o id do artigo: ");
+        String id = Input.lerString();
+
+        View.showInsercao("o artigo foi usado: ");
+        boolean usado = Input.lerBoolean();
+
+        View.showInsercao("a avaliacao do artigo: ");
+        String avaliacao = Input.lerString();
+
+        View.showInsercao("numero de donos previos: ");
+        int numDonosPrevios = Input.lerInt();
+        
+        View.showInsercao("Preco original do artigo: ");
+        double precoBase = Input.lerDouble();
+        
+        
+        View.showInsercao("a descricao do artigo: ");
+        String descricao = Input.lerString();
+        
+        View.showInsercao("a marca do artigo: ");
+        String marca = Input.lerString();
+
+        View.showInsercao("o artigo de premium: ");
+        Boolean premium = Input.lerBoolean();
+        
+        View.showInsercao("ano de producao/venda do artigo: ");
+        int ano = Input.lerInt();
+
+        View.showInsercao("o tamanho do artigo: ");
+        String tamanho = Input.lerString();
+        
+        View.showInsercao("Valorizacao do artigo: ");
+        double valorizacao= Input.lerDouble();
+
+        double precoOG = precoBase;
+        double precoAPagar =precoOG;
+    
+        //Calcular o preço a pagar na loja
+        if(id.equals("Tshirt")){
+              precoAPagar = precoAPagar/2.00;
+            }
+        else if(usado == true && premium == true){
+            precoAPagar = precoOG + (precoOG*((2023-ano)/2023)* valorizacao)/2;
+        }
+        else if(usado == false && premium == true){
+            precoAPagar = precoOG + precoOG*((2023-ano)/2023)* valorizacao;
+        }
+        else if(usado == true && premium == false){
+            precoAPagar = precoOG - precoOG*((2023-ano)/2023)* valorizacao;
+        }
+        else {
+            precoAPagar= -1;
+        }
+        double precoF = precoAPagar;
+     
+        Artigo artigo = new Artigo(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao);
+
+        return artigo;
+    }
 }

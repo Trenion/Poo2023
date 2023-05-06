@@ -188,14 +188,14 @@ public class Artigo {
     }
 
 
-    public double precoNoBalcao(String id,double precoOG, double valorizacao, int ano){
+    public static double precoNoBalcao(String id,boolean usado, boolean premium,double precoOG, double valorizacao, int ano){
 
         double precoAPagar =precoOG;
 
         if(id.equals("Tshirt")){
              precoAPagar = precoAPagar/2.00;
             }
-        else if(this.usado == true && this.premium == true){
+        else if(usado == true && premium == true){
             precoAPagar = precoOG + (precoOG*((2023-ano)/2023)* valorizacao)/2;
         }
         else if(usado == false && premium == true){
