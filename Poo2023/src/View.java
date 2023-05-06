@@ -3,7 +3,7 @@ public interface View {
         
         System.out.println("1 -> Registar um utilizador, encomenda, transportadora ou um artigo.");
         System.out.println("2 -> Save State.");
-        System.out.println("3 -> Load State.\n");
+        System.out.println("3 -> Load State.");
         System.out.println("4 -> Quit.\n");
     }
     public static void showOpcoesRegisto(){
@@ -20,6 +20,6 @@ public interface View {
         System.out.println("Error: " + s);
     }
     public static void showInsercao(String s){
-        System.out.print("Insira " + s);
+        System.out.print("Insira " + s + "\n");
     }
 }

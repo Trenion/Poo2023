@@ -23,7 +23,6 @@ public class Controller{
 
     do{
         View.printMenu();
-
         View.showInsercao("uma opçao: ");
 
         option = Input.lerString();
@@ -46,8 +45,8 @@ public class Controller{
 
 
             /*gravar o estado da aplicação em ficheiro*/
-            case "S": {
-                String filename = "gestEncomendas.dat";
+            case "2": {
+                String filename = "";
                 try {
                     ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
                     os.writeObject(tmb);
@@ -61,8 +60,8 @@ public class Controller{
             }
 
             /*Dar load ao estado da aplicaçao*/
-            case "L": {
-                String filename = "gestEncomendas.dat";
+            case "3": {
+                String filename = "";
                 try {
                     ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
                     tmb = (TMB) is.readObject();

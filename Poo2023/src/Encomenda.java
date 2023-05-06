@@ -10,7 +10,7 @@ public class Encomenda {
     int codigoUser;
     String transportadoraNome;
     String Dimensao;// tamanho da emcomenda.
-    double PreçoF;
+    double PrecoF;
     //double TaxaSatisfacao;
     /*com a taxa
     de satisfação de serviço de 0,5 € por cada artigo novo e de 0,25€ por cada artigo usado e ainda os custos
@@ -21,16 +21,16 @@ public class Encomenda {
 
     public Encomenda() {
         this.codigoUser=-1;
-        this.PreçoF=-1;
+        this.PrecoF=-1;
         this.Criacao = 2023 ;
         this.artigos= new HashMap<String,Artigo>(); 
     }
 
-    public Encomenda(int codigoUser, String transportadoraNome, String Dimensao, double PreçoF, int Criacao, Map<String,Artigo> artigos) {
+    public Encomenda(int codigoUser, String transportadoraNome, String Dimensao, double PrecoF, int Criacao, Map<String,Artigo> artigos) {
         this.codigoUser = codigoUser;
         this.transportadoraNome = transportadoraNome;
         this.Dimensao = Dimensao;
-        this.PreçoF = PreçoF;
+        this.PrecoF = PrecoF;
         this.Criacao = Criacao;
         this.artigos = artigos;
     }
@@ -39,7 +39,7 @@ public class Encomenda {
         this.codigoUser = getCodigoUser();
         this.transportadoraNome = getTransportadoraNome();
         this.Dimensao = getDimensao();
-        this.PreçoF = getPreçoF();
+        this.PrecoF = getPrecoF();
         this.Criacao = getCriacao();
         this.artigos = getArtigos();
     }
@@ -68,12 +68,12 @@ public class Encomenda {
         this.Dimensao = Dimensao;
     }
 
-    public double getPreçoF() {
-        return this.PreçoF;
+    public double getPrecoF() {
+        return this.PrecoF;
     }
 
-    public void setPreçoF(double PreçoF) {
-        this.PreçoF = PreçoF;
+    public void setPrecoF(double PrecoF) {
+        this.PrecoF = PrecoF;
     }
 
  
@@ -106,28 +106,28 @@ public class Encomenda {
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
         Encomenda E = ( Encomenda ) o ;
-        return (this.codigoUser == E.getCodigoUser() && this.transportadoraNome == E.getTransportadoraNome() && this.Dimensao == E.getDimensao() && this.PreçoF == E.getPreçoF() && this.Criacao == E.getCriacao() && this.artigos == E.getArtigos());
+        return (this.codigoUser == E.getCodigoUser() && this.transportadoraNome == E.getTransportadoraNome() && this.Dimensao == E.getDimensao() && this.PrecoF == E.getPrecoF() && this.Criacao == E.getCriacao() && this.artigos == E.getArtigos());
     }
 
 
     public double precoFinalTotal(double peq,double med,double gra, Map<String,Artigo> artigos){
-        double PreçoF=0;
+        double PrecoF=0;
         //artigo novo paga 0.5 e usado 0.25
         for (var entry : artigos.values()) {
                     if(entry.getUsado()==true){
-                        PreçoF=PreçoF+0.25;
+                        PrecoF=PrecoF+0.25;
                     }else{
-                        PreçoF=PreçoF+0.50;
+                        PrecoF=PrecoF+0.50;
                     }
                     if(entry.getTamanho()=="M" || entry.getTamanho()=="38"|| entry.getTamanho()=="39"|| entry.getTamanho()=="40"|| entry.getTamanho()=="41"){
-                        PreçoF= PreçoF+ med + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ med + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
                     }else if(entry.getTamanho()=="S" || entry.getTamanho()=="XS" || Double.valueOf(entry.getTamanho())<38){
-                        PreçoF= PreçoF+ peq + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ peq + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
                     }else{
-                        PreçoF= PreçoF+ gra + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ gra + entry.precoNoBalcao(entry.getId(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
                     }    
         }
-        return PreçoF;
+        return PrecoF;
     }
 
 }

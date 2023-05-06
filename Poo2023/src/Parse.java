@@ -135,7 +135,7 @@ public static Encomenda parseEncomenda(String input){
   int codigoUser =Integer.valueOf(campos[0]);
   String transportadoraNome = campos[1];
   String Dimensao = campos[2];
-  double PreçoF = Double.parseDouble(campos[3]);
+  double PrecoF = Double.parseDouble(campos[3]);
  
   int Criacao=Integer.valueOf(campos[4]);
 
@@ -147,7 +147,7 @@ public static Encomenda parseEncomenda(String input){
       artigos.put(campos1[i],parseArtigo(campos1[i]));
   }
 
-  return new Encomenda(codigoUser,transportadoraNome,Dimensao,PreçoF,Criacao,artigos);
+  return new Encomenda(codigoUser,transportadoraNome,Dimensao,PrecoF,Criacao,artigos);
 }
 
 
