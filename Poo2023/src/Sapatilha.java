@@ -6,9 +6,9 @@ public class Sapatilha extends Artigo {
     
 
 
-    public Sapatilha(  boolean Atacadores, String Color) {
+    public Sapatilha( String id, boolean usado, String avaliacao, int numDonosPrevios, double precoBase, double precoF, String descricao, String marca, Boolean premium, int ano,String tamanho,double valorizacao, boolean Atacadores, String Color) {
  
-        ;
+        super(id,usado,avaliacao, numDonosPrevios,  precoBase, precoF, descricao,  marca,  premium,  ano, tamanho, valorizacao);
         this.Atacadores = Atacadores;
         this.Color = Color;
         
@@ -16,6 +16,7 @@ public class Sapatilha extends Artigo {
     }
 
     public Sapatilha() {
+        super();
         this.Atacadores = false;
         
         
@@ -23,7 +24,7 @@ public class Sapatilha extends Artigo {
 
     public Sapatilha(Sapatilha A) {
 
-        
+        super(A);
         this.Atacadores = A.getAtacadores();
         this.Color = A.getColor();
         
@@ -65,6 +66,7 @@ public class Sapatilha extends Artigo {
             return true ;
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
+        if (! super.equals(o)) return false;
         Sapatilha A = ( Sapatilha ) o ;
         return (  this.Atacadores == A.getAtacadores() && this.Color == A.getColor());
     }  

@@ -7,7 +7,7 @@ import java.util.*;
 public class Parse {
     	
   public static void parse(TMB tmb){
-    List<String> linhas = lerFicheiro("logs_20200416.txt");
+    List<String> linhas = lerFicheiro("C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.csv");
     String[] linhaPartida;
     for (String linha : linhas) {
             linhaPartida = linha.split(":", 2);
@@ -121,8 +121,22 @@ public static Artigo parseArtigo(String input){
     int ano = Integer.valueOf(campos[9]);
     String tamanho = campos[10];
     double valorizacao = Double.parseDouble(campos[11]);
-
-    return new Artigo(id,usado,avaliacao,numDonosPrevios,precoBase,precoF,descricao,marca,premium,ano,tamanho,valorizacao);
+    if(id.equals("Tshirt")){
+        String padrao = campos[12];
+        return new Shirt(id,usado,avaliacao,numDonosPrevios,precoBase,precoF,descricao,marca,premium,ano,tamanho,valorizacao,padrao);
+    }
+    else if(id.equals("Mala")){
+        String material = campos[12];
+        return new Mala(id,usado,avaliacao,numDonosPrevios,precoBase,precoF,descricao,marca,premium,ano,tamanho,valorizacao,material);
+    }
+    else if(id.equals("Sapatilha")){
+        Boolean atacadores = Boolean.parseBoolean(campos[12]);
+        String color = campos[13];
+        return new Sapatilha(id,usado,avaliacao,numDonosPrevios,precoBase,precoF,descricao,marca,premium,ano,tamanho,valorizacao, atacadores,color);
+    }else{ 
+        System.out.println("error no matching id found during parse");
+        return new Artigo();
+    }
 }
 
 
@@ -197,9 +211,14 @@ public static List<String> lerFicheiro(String nomeFich) {
         br = new BufferedReader(new FileReader(nomeFich));
         String line = br.readLine();
 
-        while(!line.equals("Dados de LOGS:")){
+        
+/* 
+        while(line != null && !line.equals("Dados de LOGS:")){
+            System.out.println(line);
             line = br.readLine();
-        }
+            System.out.println(line);
+            
+        }*/
 
         while(line != null) {
             lines.add(line);

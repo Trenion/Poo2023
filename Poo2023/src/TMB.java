@@ -61,7 +61,10 @@ public class TMB implements Serializable{
     }
 
     public void addArtigo(Artigo a) {
-        artigos.put(a.getId(), a);
+        if (a == null) {System.out.println("error null artigo found");} else {
+            artigos.put(a.getId(), a);
+        }
+        
     }
 
     public void addEncomenda(Encomenda e){encomendas.put(Integer.toString(e.getCodigoUser()), e);}
@@ -124,9 +127,38 @@ public class TMB implements Serializable{
             precoAPagar= -1;
         }
         double precoF = precoAPagar;
-     
-        Artigo artigo = new Artigo(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao);
+        Artigo artigo = null;
+        switch(id){
+            case "Tshirt":{
+                View.showInsercao("padrao da Tshirt: ");
+                String padrao = Input.lerString();
+                artigo =(Artigo)  new Shirt(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao,padrao);
+                return artigo;
+                
+            }
+            case "Mala":{
+                View.showInsercao("material da Mala: ");
+                String mala = Input.lerString();
+                artigo =(Artigo)  new Mala(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao,mala);
+                return artigo;
+            }
+            case "Sapatilhas":{
 
+                View.showInsercao("com ou sem atacadores: ");
+                Boolean atacadores = Input.lerBoolean();
+                View.showInsercao("cor das sapatilhas: ");
+                String cor = Input.lerString();
+                artigo =(Artigo) new Sapatilha(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao,atacadores,cor);
+                return artigo;
+            }
+            default:{
+                System.out.println("Error: no valid id returnin null");
+                break;
+            }
+            
+        }
         return artigo;
+
+
     }
 }

@@ -120,11 +120,11 @@ public class Encomenda implements Serializable {
                         PrecoF=PrecoF+0.50;
                     }
                     if(entry.getTamanho()=="M" || entry.getTamanho()=="38"|| entry.getTamanho()=="39"|| entry.getTamanho()=="40"|| entry.getTamanho()=="41"){
-                        PrecoF= PrecoF+ med + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ med + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno(), ((Shirt) entry).getPadrao());
                     }else if(entry.getTamanho()=="S" || entry.getTamanho()=="XS" || Double.valueOf(entry.getTamanho())<38){
-                        PrecoF= PrecoF+ peq + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ peq + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno(),((Shirt) entry).getPadrao());
                     }else{
-                        PrecoF= PrecoF+ gra + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno());
+                        PrecoF= PrecoF+ gra + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno(),((Shirt) entry).getPadrao());
                     }    
         }
         return PrecoF;

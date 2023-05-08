@@ -10,6 +10,8 @@ import java.util.Map;
 
 
 
+
+
 public class Controller{
 
     TMB tmb = new TMB();
@@ -71,8 +73,14 @@ public class Controller{
                             View.showInsercao("1 se nao for adicionar um artigo ");
                             pain = Input.lerInt();
                             if (pain ==0){
-                                Artigo art =tmb.createArtigo(); // verificar se isto funciona
-                                HistoricoVendido.put(art.getId(),art);
+
+                                Artigo art = TMB.createArtigo();
+                                if (art !=null){
+                                    HistoricoVendido.put(art.getId(),art);
+                                }else{
+                                    System.out.println("error creating artigo");
+                                    }
+
                             }
                         }
                         pain=0;
@@ -82,8 +90,13 @@ public class Controller{
                             View.showInsercao("1 se nao for adicionar um artigo ");
                             pain = Input.lerInt();
                             if (pain ==0){
-                                Artigo art =tmb.createArtigo(); // verificar se isto funciona
-                                HistoricoComprado.put(art.getId(),art);
+                                
+                                Artigo art = TMB.createArtigo();
+                                if (art !=null){
+                                    HistoricoComprado.put(art.getId(),art);
+                                }else{
+                                    System.out.println("error creating artigo");
+                                    }
                             }
                         }
                         tmb.addUtilizador(new Utilizador(Codigo, Email, Nome, Morada, NFiscal,HistoricoVendido,HistoricoComprado));
@@ -115,10 +128,14 @@ public class Controller{
                             View.showInsercao("0 se for adicionar um artigo ");
                             View.showInsercao("1 se nao for adicionar um artigo ");
                             pain = Input.lerInt();
-                            if (pain ==0){
-                                Artigo art =tmb.createArtigo(); // verificar se isto funciona
+                            
+                            Artigo art = TMB.createArtigo();
+                            if (art !=null){
                                 artigos.put(art.getId(),art);
-                            }
+                            }else{
+                                System.out.println("error creating artigo");
+                                }
+                            
                         }
                         
                         Map<String,Transportadora> ta = tmb.getTransportadoras();
@@ -164,48 +181,15 @@ public class Controller{
                         /*registar Artigo*/
 
                         
-                        View.showInsercao("o id do artigo: ");
-                        String id = Input.lerString();
-
-                        View.showInsercao("o artigo foi usado: ");
-                        boolean usado = Input.lerBoolean();
-
-                        View.showInsercao("a avaliacao do artigo: ");
-                        String avaliacao = Input.lerString();
-
-                        View.showInsercao("numero de donos previos: ");
-                        int numDonosPrevios = Input.lerInt();
+                       
+                        Artigo artigo = TMB.createArtigo();
+                        if (artigo !=null){
+                            tmb.addArtigo(artigo);
+                        }else{
+                            System.out.println("error creating artigo");
+                        }
                         
-                        View.showInsercao("Preco original do artigo: ");
-                        double precoBase = Input.lerDouble();
-                        
-                        
-                        View.showInsercao("a descricao do artigo: ");
-                        String descricao = Input.lerString();
-                        
-                        View.showInsercao("a marca do artigo: ");
-                        String marca = Input.lerString();
-
-                        View.showInsercao("o artigo de premium: ");
-                        Boolean premium = Input.lerBoolean();
-                        
-                        View.showInsercao("ano de producao/venda do artigo: ");
-                        int ano = Input.lerInt();
-
-                        View.showInsercao("o tamanho do artigo: ");
-                        String tamanho = Input.lerString();
-                        
-                        View.showInsercao("Valorizacao do artigo: ");
-                        double valorizacao= Input.lerDouble();
-
-                        
-                        
-                        double precoF = Artigo.precoNoBalcao( id, usado, premium, precoBase, valorizacao, ano);
-
-
-                        
-                        tmb.addArtigo(new Artigo(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao));
-                        
+       
 
                        break;
                     }

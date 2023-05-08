@@ -6,21 +6,22 @@ public class Mala extends Artigo {
 
 
 
-    public Mala( String Material) {
+    public Mala(String id, boolean usado, String avaliacao, int numDonosPrevios, double precoBase, double precoF, String descricao, String marca, Boolean premium, int ano,String tamanho,double valorizacao, String Material) {
         
-        
+        super(id,usado,avaliacao, numDonosPrevios,  precoBase, precoF, descricao,  marca,  premium,  ano, tamanho, valorizacao);
         this.Material = Material;
       
 
     }
 
     public Mala() {
+        super();
     }
 
     public Mala(Mala M) {
     
         
-        
+        super(M);
         this.Material = M.getMaterial();
        
 
@@ -46,6 +47,7 @@ public class Mala extends Artigo {
             return true ;
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
+        if (! super.equals(o)) return false;
         Mala M = ( Mala ) o ;
         return ( this.Material == M.getMaterial());
     }    

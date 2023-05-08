@@ -188,13 +188,15 @@ public class Artigo implements Serializable {
     }
 
 
-    public static double precoNoBalcao(String id,boolean usado, boolean premium,double precoOG, double valorizacao, int ano){
+    public double precoNoBalcao(String id,boolean usado, boolean premium,double precoOG, double valorizacao, int ano,String padrao){
 
         double precoAPagar =precoOG;
-
-        if(id.equals("Tshirt")){
-             precoAPagar = precoAPagar/2.00;
-            }
+        if(padrao != null){
+        if(padrao.equals("liso")|| (usado ==false && id.equals("Tshirt"))){
+            precoAPagar =precoOG;
+        }else if(id.equals("Tshirt")){
+            precoAPagar = precoAPagar/2.00;
+        }}
         else if(usado == true && premium == true){
             precoAPagar = precoOG + (precoOG*((2023-ano)/2023)* valorizacao)/2;
         }
