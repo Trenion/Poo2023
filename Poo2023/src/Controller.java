@@ -226,7 +226,7 @@ public class Controller{
 
             /*gravar o estado da aplicação em ficheiro*/
             case "2": {
-                String filename = "";
+                String filename = "DB.csv";
                 try {
                     ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
                     os.writeObject(tmb);
