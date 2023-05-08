@@ -1,4 +1,5 @@
-public class Transportadora {
+import java.io.Serializable;
+public class Transportadora implements Serializable {
 
     String Nome;
     double Pequeno;

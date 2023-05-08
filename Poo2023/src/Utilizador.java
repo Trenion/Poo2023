@@ -1,9 +1,9 @@
-
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Utilizador {
+public class Utilizador implements Serializable {
 
     int Codigo;/*fornecido automaticamente pelo sistema) */
     String Email;

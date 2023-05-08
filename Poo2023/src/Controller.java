@@ -226,7 +226,7 @@ public class Controller{
 
             /*gravar o estado da aplicação em ficheiro*/
             case "2": {
-                String filename = "DB.csv";
+                String filename = "C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.csv";
                 try {
                     ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
                     os.writeObject(tmb);
@@ -241,7 +241,7 @@ public class Controller{
 
             /*Dar load ao estado da aplicaçao*/
             case "3": {
-                String filename = "";
+                String filename = "C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.csv";
                 try {
                     ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
                     tmb = (TMB) is.readObject();
@@ -259,6 +259,8 @@ public class Controller{
                 View.showBB();
                 break;
             }
+            
+            
 
             /*Opçao invalida*/
             default: {

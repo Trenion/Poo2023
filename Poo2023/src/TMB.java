@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class TMB {
+public class TMB implements Serializable{
 
     private Map<String, Utilizador> utilizadores;
     private Map<String, Transportadora> transportadoras;
@@ -66,7 +66,7 @@ public class TMB {
 
     public void addEncomenda(Encomenda e){encomendas.put(Integer.toString(e.getCodigoUser()), e);}
 
-    public Artigo createArtigo(){
+    public static Artigo createArtigo(){
         
 
         

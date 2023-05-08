@@ -1,10 +1,10 @@
 
-
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Encomenda {
+public class Encomenda implements Serializable {
 
     
     int codigoUser;
