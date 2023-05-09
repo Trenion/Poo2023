@@ -1,3 +1,0 @@
-    000000,abc@gmail.com,Palhaço Um,Rua das Couves,123,123123123,Shirt,XL,Riscas,10.00,true/Mala,XL,100.00,Couro,2010,false,0.50/Sapatilhas,43,true,Black,1980,70.00,true,false
-    111111,def@gmail.com,Palhaço Dois,Rua das Alfaces,456,456456456,Shirt,XS,Quadrados,10.00,false/Mala,Xs,100.00,Metal,1990,true,0.50/Sapatilhas,47,false,White,2020,70.00,false,true
-    222222,ghi@gmail.com,Palhaço Tres,Rua das Cenouras,789,789789789,Shirt,XS,Quadrados,10.00,false/Mala,Xs,100.00,Metal,1990,true,0.50/Sapatilhas,47,false,White,2020,70.00,false,true,Shirt,XL,Riscas,10.00,true/Mala,XL,100.00,Couro,2010,false,0.50/Sapatilhas,43,true,Black,1980,70.00,true,false

@@ -1,2 +1,0 @@
-Autobots,1,3,5
-Decepticons,2,4,6
