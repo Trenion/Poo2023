@@ -206,8 +206,6 @@ public class Controller{
 
 
 
-
-
             /*gravar o estado da aplicação em ficheiro*/
             case "2": {
                 String filename = "C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.csv";
