@@ -10,7 +10,6 @@ public class Artigo implements Serializable {
     //double PrecoComTaxa;/*preço a pagar do produto com as taxas da loja */
 
     private String id;
-    //private int tipo; // 0 -> indefinido, 1 -> sapatilhas, 2 -> tshirts, 3 -> malas
     private boolean usado;
     private String avaliacao;
     private int numDonosPrevios;
