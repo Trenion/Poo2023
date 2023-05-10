@@ -7,7 +7,7 @@ import java.util.*;
 public class Parse {
     	
   public static void parse(TMB tmb){
-    List<String> linhas = lerFicheiro("C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.csv");
+    List<String> linhas = lerFicheiro("C:\\Users\\Utilizador\\Documents\\GitHub\\Poo2023\\Poo2023\\src\\DB.bin");
     String[] linhaPartida;
     for (String linha : linhas) {
             linhaPartida = linha.split(":", 2);
