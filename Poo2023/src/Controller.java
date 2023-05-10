@@ -122,19 +122,19 @@ public class Controller{
                         int Criacao= Input.lerInt();
 
                         Map<String,Artigo> artigos = new HashMap<String,Artigo>();
-                        View.showInsercao("Histórico de vendas: ");
+                        View.showInsercao("lista de Artigos: ");
                         int pain=0;
                         while(pain==0){
                             View.showInsercao("0 se for adicionar um artigo ");
                             View.showInsercao("1 se nao for adicionar um artigo ");
                             pain = Input.lerInt();
-                            
+                            if(pain == 0){
                             Artigo art = TMB.createArtigo();
                             if (art !=null){
                                 artigos.put(art.getId(),art);
                             }else{
                                 System.out.println("error creating artigo");
-                                }
+                                }}
                             
                         }
                         

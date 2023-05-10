@@ -141,7 +141,7 @@ public class TMB implements Serializable{
                 artigo =(Artigo)  new Mala(id, usado, avaliacao, numDonosPrevios,  precoBase, precoF,  descricao,  marca, premium, ano, tamanho, valorizacao,mala);
                 return artigo;
             }
-            case "Sapatilhas":{
+            case "Sapatilha":{
 
                 View.showInsercao("com ou sem atacadores: ");
                 Boolean atacadores = Input.lerBoolean();
