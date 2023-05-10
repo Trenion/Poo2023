@@ -150,7 +150,7 @@ public class Controller{
                         if(f == 0){
                             System.out.println("Transportadora not found.");
                         }else{
-                            double PrecoF = Encomenda.precoFinalTotal(a.getPequeno(),a.getMedio(),a.getGrande(),artigos);
+                            double PrecoF = Encomenda.precoFinalTotal(a.getPequeno(),a.getMedio(),a.getGrande(),a.getPremium(),artigos);
                             tmb.addEncomenda(new Encomenda(codigoUser,transportadoraNome,Dimensao,PrecoF,Criacao,artigos));
                         }
                             
@@ -173,7 +173,10 @@ public class Controller{
                         View.showInsercao("taxa a pagar tamanho grande: ");
                         double gra = Input.lerDouble();
 
-                        tmb.addTransportadora(new Transportadora(nomeTrans, peq, med, gra));
+                        View.showInsercao("a transportadora é premium: ");
+                        Boolean premium = Input.lerBoolean();
+
+                        tmb.addTransportadora(new Transportadora(nomeTrans, peq, med, gra, premium));
                         break;
                     }
 

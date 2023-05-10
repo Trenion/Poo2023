@@ -98,10 +98,10 @@ public static Transportadora parseTransportadora(String input){
   double peq= Double.parseDouble(campos[1]);
   double med = Double.parseDouble(campos[2]);
   double gra = Double.parseDouble(campos[3]);
-
+  Boolean premium = Boolean.parseBoolean(campos[4]);
 
   /*dar randomize ao peso*/
-  return new Transportadora(nome,peq,med,gra);
+  return new Transportadora(nome,peq,med,gra,premium);
 }
 
 

@@ -5,19 +5,21 @@ public class Transportadora implements Serializable {
     double Pequeno;
     double Medio;
     double Grande;
+    Boolean premium ;
 
-    public Transportadora(String Nome, double Pequeno, double Medio, double Grande) {
+    public Transportadora(String Nome, double Pequeno, double Medio, double Grande,Boolean premium ) {
         this.Nome = Nome;
         this.Pequeno = Pequeno;
         this.Medio = Medio;
         this.Grande = Grande;
+        this.premium = premium;
     }
 
     public Transportadora() {
         this.Pequeno = -1;
         this.Medio = -1;
         this.Grande = -1;
-        
+        this.premium = false;
     }
 
     public Transportadora(Transportadora K) {
@@ -25,7 +27,22 @@ public class Transportadora implements Serializable {
         this.Pequeno = K.getPequeno();
         this.Medio = K.getMedio();
         this.Grande = K.getGrande();
+        this.premium = K.getPremium();
     }
+
+
+    public Boolean isPremium() {
+        return this.premium;
+    }
+
+    public Boolean getPremium() {
+        return this.premium;
+    }
+
+    public void setPremium(Boolean premium) {
+        this.premium = premium;
+    }
+
 
     public String getNome() {
         return this.Nome;
@@ -71,6 +88,6 @@ public class Transportadora implements Serializable {
         if (( o == null ) || ( this . getClass () != o . getClass () ) )
             return false ;
         Transportadora K = ( Transportadora ) o ;
-        return (this.Nome == K.getNome() && this.Pequeno == K.getPequeno() && this.Medio == K.getMedio() && this.Grande == K.getGrande());
+        return (this.Nome == K.getNome() && this.Pequeno == K.getPequeno() && this.Medio == K.getMedio() && this.Grande == K.getGrande() && this.premium == K.getPremium());
     }
 }

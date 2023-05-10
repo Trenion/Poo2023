@@ -110,14 +110,21 @@ public class Encomenda implements Serializable {
     }
 
 
-    public static double precoFinalTotal(double peq,double med,double gra, Map<String,Artigo> artigos){
+    public static double precoFinalTotal(double peq,double med,double gra,Boolean premium, Map<String,Artigo> artigos){
         double PrecoF=0;
         //artigo novo paga 0.5 e usado 0.25
         for (var entry : artigos.values()) {
+            double low = 0.25;
+            double high= 0.50;
+            if(premium){
+                low = 4* low;
+                high = 4* high;
+            }
+            
                     if(entry.getUsado()==true){
-                        PrecoF=PrecoF+0.25;
+                        PrecoF=PrecoF+low;
                     }else{
-                        PrecoF=PrecoF+0.50;
+                        PrecoF=PrecoF+high;
                     }
                     if(entry.getTamanho()=="M" || entry.getTamanho()=="38"|| entry.getTamanho()=="39"|| entry.getTamanho()=="40"|| entry.getTamanho()=="41"){
                         PrecoF= PrecoF+ med + entry.precoNoBalcao(entry.getId(),entry.getUsado(),entry.getPremium(),entry.getPrecoBase(), entry.getValorizacao(), entry.getAno(), ((Shirt) entry).getPadrao());
